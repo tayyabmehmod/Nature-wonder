@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nature Wonders</title>
+    <link rel="stylesheet" href="cs.css">
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission until validation is done
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (name.length < 2) {
+                alert("Please enter a valid name (at least 2 characters).");
+                return false;
+            }
+
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (message.length < 10) {
+                alert("Message should be at least 10 characters long.");
+                return false;
+            }
+
+            alert("Thank you! Your message has been sent.");
+            document.getElementById("contactForm").reset(); // Optional: Reset form
+            return true;
+        }
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; background-color: #e8f5e9; color: #2e7d32;">
+    <header style="background-color: #1b5e20; color: white; padding: 20px;">
+        <h1>Contact Nature Wonders</h1>
+    </header>
+    <a href="home.html" class="back-button">← Back to Home</a>
+
+    <section style="margin: 40px 0;">
+        <p>If you have any questions or inquiries, feel free to contact us.</p>
+        <form id="contactForm" onsubmit="return validateForm(event)">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+            <input type="submit" value="Send Message">
+        </form>
+    </section>
+
+    <footer style="background-color: #1b5e20; color: white; padding: 10px;">
+        <p>© 2025 Nature Wonders. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
